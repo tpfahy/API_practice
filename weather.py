@@ -5,9 +5,10 @@ from dotenv import load_dotenv
 
 # Load .env variables
 load_dotenv()
+print(f"Loaded API Key: {os.getenv('OPENWEATHER_API_KEY')}")
 
 def get_weather(city):
-    api_key = os.getenv("OPENWEATHER_API_KEY")
+    api_key = os.getenv("OPENWEATHER_API_KEY").strip()
     if not api_key:
         print("Error: OPENWEATHER_API_KEY not found in .env")
         sys.exit(1)
