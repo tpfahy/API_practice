@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 # Load .env variables
 load_dotenv()
-print(f"Loaded API Key: {os.getenv('OPENWEATHER_API_KEY')}")
 
 def get_weather(city):
     api_key = os.getenv("OPENWEATHER_API_KEY").strip()
