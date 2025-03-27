@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_weather(city):
-    api_key = os.getenv("OPENWEATHER_API_KEY").strip()
+    api_key = os.getenv("OPENWEATHER_API_KEY")
     if not api_key:
         print("Error: OPENWEATHER_API_KEY not found in .env")
         sys.exit(1)
@@ -19,7 +19,7 @@ def get_weather(city):
         data = response.json()
         temp = data['main']['temp']
         desc = data['weather'][0]['description']
-        print(f"The weather in {city} is {desc} with a temperature of {temp}°F.")
+        print(f"The weather in {city.title()} is {desc} with a temperature of {temp}°F.")
     else:
         print(f"Error: {response.status_code} - {response.json().get('message', 'Unknown error')}")
 
