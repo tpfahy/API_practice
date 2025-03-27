@@ -3,10 +3,11 @@ import sys
 import requests
 from dotenv import load_dotenv
 
-# Load .env variables
 load_dotenv()
 
 def get_weather(city):
+    # you must have your own API key for this to work and it must be in 
+    # your own .env file
     api_key = os.getenv("OPENWEATHER_API_KEY")
     if not api_key:
         print("Error: OPENWEATHER_API_KEY not found in .env")
@@ -14,7 +15,6 @@ def get_weather(city):
 
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=imperial"
     response = requests.get(url)
-
     if response.status_code == 200:
         data = response.json()
         temp = data['main']['temp']
